@@ -1,0 +1,600 @@
+/* ======================================================== */
+/*                CSS 변수 및 기본 스타일 적용                 */
+/* ======================================================== */
+:root {
+    /* 전체 배경색 */
+    --bg-color: #EAEAEA;
+    /* 밝은 그림자 (흰색) */
+    --shadow-light: #ffffff;
+    /* 어두운 그림자 */
+    --shadow-dark: #C0BFD9;
+    /* 포인트 컬러. */
+    --primary-blue: #5A588C;
+    /* 주요 텍스트 */
+    --text-main: #212340;
+    /* 보조 텍스트 */
+    --text-sub: #9A99BF;
+
+    /* 애니메이션 속도 */
+    --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+}
+
+/* ======================================================== */
+/*      HTML에 클래스 이름만 붙이면 입체감이 살아나게 설계
+/* ======================================================== */
+
+/* .nm-box (밖으로 튀어나온 효과) */
+.nm-box {
+    background: var(--bg-color);
+    border-radius: 20px;
+    box-shadow: 2px 2px 12px var(--shadow-dark), 
+                -8px -8px 12px var(--shadow-light);
+}
+/* .nm-box-inset (안으로 들어간 효과) */
+.nm-box-inset {
+    background: var(--bg-color);
+    border-radius: 20px;
+    box-shadow: inset 2px 2px 12px var(--shadow-dark), 
+                inset -6px -6px 8px var(--shadow-light);
+}
+
+/* ======================================================== */
+/*                         메인 컨테이너                      */
+/* ======================================================== */
+
+.main-container {
+    min-height: 100vh;
+}
+
+section {
+    padding: 30px 20px;
+}
+
+.profile-section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.profile-img-box {
+    width: 120px; 
+    height: 160px;
+    overflow: hidden;
+
+    margin-bottom: 35px;
+}
+
+.profile-img-box img {
+    width: 100%;
+    height: 100%;
+}
+
+.profile-info .intro-text {
+    color: var(--primary-blue);
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.profile-info h1 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+.contact-links-bg {
+    padding: 20px 15px;
+    border-radius: 30px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-links-flex {
+    display: flex;
+    gap: 10px;
+}
+
+.contact-links {
+    width: 80%;
+    padding: 10px 20px;
+}
+
+.contact-links-icon {
+    width: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact-links-icon i {
+    font-size: 1.4rem;
+    color: var(--primary-blue);
+}
+
+.contact-links a {
+    color: var(--primary-blue);
+    font-size: 0.90rem;
+    font-weight: 400;
+}
+
+.profile-info-btn {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 1.35rem;
+    color: var(--primary-blue);
+}
+
+
+/* ======================================================== */
+/*                          제목 스타일                      */
+/* ======================================================== */
+
+.skill-bg {
+    padding: 30px 25px;
+}
+
+h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 30px;
+    text-align: center;
+    position: relative;
+}
+
+h2::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 4px;
+    background: var(--primary-blue);
+    margin: 8px auto 0;
+    border-radius: 2px;
+}
+
+
+/* ============================================================
+   1. [MOBILE] 모바일: 원형 뉴모피즘 스타일 (기본)
+   ============================================================ */
+.skill-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.skill-item {
+    width: calc((100% - 20px) / 2);
+    aspect-ratio: 1 / 1;
+    max-width: 160px;
+    perspective: 1000px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.circle-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: conic-gradient(
+        var(--clr) calc(var(--per) * 1%), 
+        #e6e6e6 0deg
+    );
+    box-shadow: 8px 8px 16px var(--shadow-dark), 
+                -8px -8px 16px var(--shadow-light);
+    transition: var(--transition);
+}
+
+.circle-box::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 82%;
+    height: 82%;
+    background: var(--bg-color);
+    border-radius: 50%;
+    box-shadow: inset 6px 6px 12px var(--shadow-dark), 
+                inset -6px -6px 12px var(--shadow-light);
+}
+
+.skill-per {
+    position: relative;
+    z-index: 1;
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #5A588C
+}
+
+.skill-name {
+    position: relative;
+    z-index: 1;
+    font-size: 0.8rem;
+    color: #212340;
+    font-weight: 600;
+    margin-top: 2px;
+}
+
+/* 호버 효과 */
+.skill-item:hover .circle-box {
+    transform: translateY(-5px);
+    box-shadow: 12px 12px 20px var(--shadow-dark), 
+               -12px -12px 20px var(--shadow-light);
+}
+
+/* ============================================ */
+/*               경험 및 교육 카드                */
+/* ============================================ */
+
+.exp-box {
+    padding: 25px;
+    text-align: left;
+}
+
+.exp-title {
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    word-break: keep-all;
+}
+
+.exp-date {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text-sub);
+}
+
+.skill-container {
+    width: 100%;
+    max-width: 1200px;
+    text-align: center;
+}
+
+
+/* ======================================================== */
+/*                           tab-btn                        */
+/* ======================================================== */
+
+.project-header{
+    margin-top: 30px;
+}
+
+.project-header .project-menu{
+    display: none;
+}
+
+/* ======================================================== */
+/*                      project-display                     */
+/* ======================================================== */
+
+.project-section {
+    margin-top: 60px;
+}
+.project-display {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding-bottom: 30px;
+}
+
+.project-link {
+    display: block;
+}
+
+.project-card {
+    --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: var(--transition);
+    cursor: pointer;
+
+    padding: 20px;
+}
+
+.project-link:hover .project-card {
+    transform: translateY(-10px);
+}
+
+.pj-info h3 {
+    font-size: 1.125rem;
+}
+
+.pj-info .sub-title {
+    font-size: 0.99rem;
+    color: #5A588C;
+    padding-top: 10px;
+}
+
+.pj-info .pj-span {
+    color: #9A99BF;
+    font-size: 0.875rem;
+    display: inline-block;
+}
+
+.project-card .pj-toolbox {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding-top: 20px;
+}
+
+.pj-toolbox .tech-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+.icon-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25px;
+    height: 25px;
+    margin-bottom: 2px;
+}
+
+.icon-box i,
+.icon-box svg {
+    font-size: 1.2rem;
+    width: 100%;
+    height: auto;
+    color: #333;
+}
+
+.tech-item p {
+    font-size: 0.75rem;
+    font-weight: 500;
+    line-height: 1.1;
+}
+
+
+/* ============================================================
+   2. [DESKTOP] 데스크탑/태블릿: 세로 막대형 스타일 (화면 768px 이상)
+   ============================================================ */
+
+@media (min-width: 768px) {
+
+    section {
+        padding: 30px 60px;
+    }
+
+    .profile-section {
+        display: flex; 
+        
+        justify-content: center; 
+        
+        padding-top: 60px;
+        min-height: auto;
+    }
+
+    .profile-card {
+        display: flex;
+        gap: 30px;
+        align-items: center;
+        
+        width: fit-content; 
+        margin: 0 auto;
+    }
+
+    .circle-box::before {
+        display: none;
+    }
+
+    .profile-info {
+        width: 100%;
+    }
+
+    .profile-info .intro-text {
+        font-size: 1.4rem;
+        font-weight: 400;
+
+        margin-top: 70px;
+    }
+
+    .profile-info h1 {
+        font-size: 2.2rem;
+
+        margin-top: -12px;
+    }
+
+    .profile-img-box {
+        width: 180px;
+        height: 170px;
+    }
+
+    .contact-links-bg {
+        width: 80%;
+    }
+
+    /* ====================================== */
+
+    /* ====================================== */
+
+
+    .skill-list {
+        height: 250px;
+        align-items: flex-end;
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+
+    .skill-item {
+        width: 60px;
+        height: 90%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+
+    .circle-box {
+        width: 100%;
+        height: 100%;
+        border-radius: 12px;
+        background: #e6e6e6;
+        box-shadow: 4px 4px 8px var(--shadow-dark), 
+                   -4px -4px 8px var(--shadow-light);
+        display: block;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .circle-box::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: calc(var(--per) * 1%);
+        background: var(--clr);
+        transition: height 1s ease-in-out;
+    }
+
+    .circle-inner {
+        position: absolute;
+        top: -50px;
+        left: 0;
+        width: 100%;
+        height: auto;
+        background: none;
+        box-shadow: none;
+    }
+
+    .skill-per {
+        position: absolute;
+        top: -30px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        text-align: center;
+
+        font-size: 1.1rem;
+        font-weight: 600;
+    }
+
+    .skill-name {
+        position: absolute;
+        bottom: -30px;
+        width: 100%;
+        left: 0;
+        text-align: center;
+
+        font-weight: 500;
+        font-size: 1rem;
+    }
+
+
+    /* ====================================== */
+    /*            project-display             */
+    /* ====================================== */
+
+    .project-card {
+        padding: 20px;
+    }
+
+    .pj-toolbox {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+}
+
+
+/* ============================================================
+   2. [DESKTOP] 데스크탑 (화면 1200px 이상)
+   ============================================================ */
+
+@media (min-width: 1200px) {
+
+    section {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 30px 150px;
+    }
+
+    .profile-section {
+        padding-top: 0px;
+    }
+
+    .profile-card {
+        gap: 60px;
+    }
+
+    .profile-info .intro-text {
+        margin-top: 150px;
+    }
+
+    .profile-info h1 {
+        margin-top: -5px;
+        margin-bottom: 50px;
+    }
+
+    .skill-list {
+        gap: 25px;
+    }
+
+    .skill-item {
+        width: 70px;
+    }
+
+    .experience-section {
+        width: 60%;
+        margin: 0 auto;
+        margin-top: 50px;
+    }
+
+    .exp-box {
+        text-align: center;
+    }
+
+
+
+    .project-display {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 25px;
+        padding-bottom: 50px;
+    }
+
+    .project-link {
+        width: calc((100% - 50px) / 3); 
+        
+        min-width: 250px; 
+    }
+
+    .project-card {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        padding: 30px;
+        text-align: center;
+    }
+
+    .pj-toolbox {
+        display: flex;
+        justify-content: center; 
+        flex-wrap: wrap;
+        gap: 8px;
+        width: 100%; 
+    }
+
+}

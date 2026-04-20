@@ -1,0 +1,38 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+ul, ol, li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    vertical-align: middle;
+    max-width: 100%;
+    border: 0;
+}
+
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font: inherit;
+}
+
+/* 8. 본문의 기본 폰트 설정 및 가독성 향상 */
+body {
+    -webkit-font-smoothing: antialiased; /* 글자를 더 부드럽게 출력 */
+    word-break: keep-all; /* 한글 줄바꿈이 단어 단위로 되게 함 */
+}
